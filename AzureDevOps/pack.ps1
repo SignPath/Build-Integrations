@@ -1,6 +1,6 @@
 $MajorVersion = 0
 $MinorVersion = 2
-$PatchVersion = 1
+$PatchVersion = 2
 
 $tasks = @('signPathDownloadSignedArtifactTask', 'signPathSubmitSigningRequestTask')
 
