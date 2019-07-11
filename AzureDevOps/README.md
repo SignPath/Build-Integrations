@@ -1,4 +1,4 @@
-# SignPath Azure DevOps Build Pipelines Tasks
+# SignPath Azure DevOps Build Pipeline Tasks
 
 Build tasks to integrate SignPath code signing into your build pipeline.
 
