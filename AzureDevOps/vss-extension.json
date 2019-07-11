@@ -1,0 +1,54 @@
+{
+    "manifestVersion":  1,
+    "id":  "signpath-tasks",
+    "name":  "SignPath",
+    "version":  "0.2.1",
+    "publisher":  "SignPath",
+    "targets":  [
+                    {
+                        "id":  "Microsoft.VisualStudio.Services"
+                    }
+                ],
+    "description":  "Build tasks to integrate SignPath code signing into your build pipeline.",
+    "categories":  [
+                       "Azure Pipelines"
+                   ],
+    "icons":  {
+                  "default":  "images/extension-icon.png"
+              },
+    "content":  {
+                    "details":  {
+                                    "path":  "README.md"
+                                }
+                },
+    "files":  [
+                  {
+                      "path":  "signPathSubmitSigningRequestTask"
+                  },
+                  {
+                      "path":  "signPathDownloadSignedArtifactTask"
+                  }
+              ],
+    "contributions":  [
+                          {
+                              "id":  "signPathSubmitSigningRequestTask",
+                              "type":  "ms.vss-distributed-task.task",
+                              "targets":  [
+                                              "ms.vss-distributed-task.tasks"
+                                          ],
+                              "properties":  {
+                                                 "name":  "signPathSubmitSigningRequestTask"
+                                             }
+                          },
+                          {
+                              "id":  "signPathDownloadSignedArtifactTask",
+                              "type":  "ms.vss-distributed-task.task",
+                              "targets":  [
+                                              "ms.vss-distributed-task.tasks"
+                                          ],
+                              "properties":  {
+                                                 "name":  "signPathDownloadSignedArtifactTask"
+                                             }
+                          }
+                      ]
+}
