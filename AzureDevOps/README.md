@@ -8,4 +8,4 @@ Submit an artifact to SignPath. Either wait for the artifact to be signed synchr
 
 ## SignPathDownloadSignedArtifactTask
 
-Download a signed artifact from SignPath. This tasks waits if the signing request has not yet been completed.
+Download a signed artifact from SignPath. This task waits if the signing request has not yet been completed.
