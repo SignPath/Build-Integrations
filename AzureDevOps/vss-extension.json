@@ -2,7 +2,7 @@
     "manifestVersion":  1,
     "id":  "signpath-tasks",
     "name":  "SignPath",
-    "version":  "0.2.3",
+    "version":  "0.2.4",
     "public":  true,
     "publisher":  "SignPath",
     "targets":  [
@@ -19,7 +19,7 @@
               },
     "content":  {
                     "details":  {
-                                    "path":  "README.md"
+                                    "path":  "SignPathExtension.md"
                                 }
                 },
     "files":  [
