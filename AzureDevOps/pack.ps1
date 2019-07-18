@@ -33,9 +33,6 @@ $json = Get-Content $extensionManifestFile -raw | ConvertFrom-Json
 $json.version = "$MajorVersion.$MinorVersion.$PatchVersion"
 $json | ConvertTo-Json -Depth 32 | Set-Content $extensionManifestFile
 
-# Installing tfx-cli
-npm i -g tfx-cli
-
 # Pack extension
 Write-Host "Packing extension..."
 tfx extension create --manifest-globs vss-extension.json
