@@ -1,1 +1,1 @@
-powershell -File pack.ps1
+powershell -File pack.ps1 -MajorVersion 0 -MinorVersion 0 -PatchVersion 1
