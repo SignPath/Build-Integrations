@@ -7,21 +7,21 @@ pool:
 steps:
 - task: PowerShell@2
   inputs:
-    filePath: 'pack.ps1'
+    filePath: 'AzureDevOps/pack.ps1'
 
 - task: SignPathSubmitSigningRequest@0
   inputs:
     waitForCompletion: 'sync'
-    inputArtifactPath: 'SignPath.signpath-tasks-*.vsix'
+    inputArtifactPath: 'AzureDevOps/SignPath.signpath-tasks-*.vsix'
     organizationId: 'INSERTHERE'
     projectName: 'RnD-SP: SignPath Integrations AzureDevOps'
     signingPolicyName: 'release-signing'
-    outputArtifactPath: 'SignPath.signpath-tasks-signed.vsix'
+    outputArtifactPath: 'AzureDevOps/SignPath.signpath-tasks-signed.vsix'
     allowOverwriting: false
     ciUserToken: '$(CIUserToken)'
     apiUrl: 'https://app.signpath.io/api/'
 
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(Pipeline.Workspace)SignPath.signpath-tasks-signed.vsix'
+    targetPath: '$(Pipeline.Workspace)AzureDevOps/SignPath.signpath-tasks-signed.vsix'
     artifact: 'SignPath.Integrations.AzureDevOps (signed vstx)'
