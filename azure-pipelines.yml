@@ -1,8 +1,3 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - master
 
@@ -10,10 +5,23 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: PowerShell@2
+  inputs:
+    filePath: 'pack.ps1'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- task: SignPathSubmitSigningRequest@0
+  inputs:
+    waitForCompletion: 'sync'
+    inputArtifactPath: 'SignPath.signpath-tasks-*.vsix'
+    organizationId: 'INSERTHERE'
+    projectName: 'RnD-SP: SignPath Integrations AzureDevOps'
+    signingPolicyName: 'release-signing'
+    outputArtifactPath: 'SignPath.signpath-tasks-signed.vsix'
+    allowOverwriting: false
+    ciUserToken: '$(CIUserToken)'
+    apiUrl: 'https://app.signpath.io/api/'
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)SignPath.signpath-tasks-signed.vsix'
+    artifact: 'SignPath.Integrations.AzureDevOps (signed vstx)'
