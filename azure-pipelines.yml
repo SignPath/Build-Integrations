@@ -5,6 +5,10 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+- task: UseNode@1
+
+- script: npm install -g tfx-cli
+
 - task: PowerShell@2
   inputs:
     filePath: 'AzureDevOps/pack.ps1'
