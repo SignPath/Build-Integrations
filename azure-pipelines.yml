@@ -12,6 +12,7 @@ steps:
 - task: PowerShell@2
   inputs:
     filePath: 'AzureDevOps/pack.ps1'
+    arguments: '-MajorVersion $(MajorVersion) -MinorVersion $(MinorVersion) -PatchVersion $(PatchVersion)'
     workingDirectory: 'AzureDevOps/'
 
 - task: SignPathSubmitSigningRequest@0
