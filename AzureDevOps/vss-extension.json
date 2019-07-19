@@ -2,7 +2,7 @@
     "manifestVersion":  1,
     "id":  "signpath-tasks",
     "name":  "SignPath",
-    "version":  "0.2.5",
+    "version":  "0.2.7",
     "public":  true,
     "publisher":  "SignPath",
     "targets":  [
