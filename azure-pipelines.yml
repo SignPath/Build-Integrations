@@ -19,7 +19,7 @@ steps:
   inputs:
     waitForCompletion: 'sync'
     inputArtifactPath: 'AzureDevOps/SignPath.signpath-tasks-*.vsix'
-    organizationId: 'INSERTHERE'
+    organizationId: '$(OrganizationId)'
     projectName: 'RnD-SP: SignPath Integrations AzureDevOps'
     signingPolicyName: 'test-signing'
     outputArtifactPath: 'AzureDevOps/SignPath.signpath-tasks-signed.vsix'
