@@ -15,7 +15,7 @@ try {
   [string]$inputArtifactDescription = Get-VstsInput -Name inputArtifactDescription
   [string]$apiUrl = Get-VstsInput -Name apiUrl
   
-  Import-Module -Name SignPath -MinimumVersion 1.2.0 -MaximumVersion 1.2.0 -Scope Local -Force
+  Install-Module -Name SignPath -MinimumVersion 1.2.0 -MaximumVersion 1.2.0 -Scope CurrentUser -Force
   
   if($waitForCompletion -eq 'sync') {
     [string]$outputArtifactPath = Get-VstsInput -Name outputArtifactPath
