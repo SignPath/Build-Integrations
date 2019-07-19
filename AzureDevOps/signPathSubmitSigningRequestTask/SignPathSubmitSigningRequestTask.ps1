@@ -17,6 +17,8 @@ try {
   
   Install-Module -Name SignPath -MinimumVersion 1.2.0 -MaximumVersion 1.2.0 -Scope CurrentUser -Force
   
+  $inputArtifactPath = Find-VstsMatch -Pattern $inputArtifactPath
+  
   if($waitForCompletion -eq 'sync') {
     [string]$outputArtifactPath = Get-VstsInput -Name outputArtifactPath
     [bool]$allowOverwriting = Get-VstsInput -Name allowOverwriting -AsBool
