@@ -31,5 +31,3 @@ steps:
   inputs:
     targetPath: '$(Build.ArtifactStagingDirectory)/SignPath.signpath-tasks.signed.vsix'
     artifact: 'SignPath.Integrations.AzureDevOps (signed vstx)'
-
-- script: tfx extension publish --token $(AzureDevOpsMarketplacePersonalAccessToken)
