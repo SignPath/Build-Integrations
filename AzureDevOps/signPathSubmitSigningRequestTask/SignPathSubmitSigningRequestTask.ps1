@@ -14,7 +14,8 @@ try {
   [string]$ciUserToken = Get-VstsInput -Name ciUserToken
   [string]$inputArtifactDescription = Get-VstsInput -Name inputArtifactDescription
   [string]$apiUrl = Get-VstsInput -Name apiUrl
-  
+  [string]$waitForCompletionTimeoutInSeconds = Get-VstsInput -Name waitForCompletionTimeoutInSeconds
+
   Install-Module -Name SignPath -MinimumVersion 1.2.0 -MaximumVersion 1.2.0 -Scope CurrentUser -Force
   
   $inputArtifactPath = Find-VstsMatch -Pattern $inputArtifactPath
@@ -34,6 +35,7 @@ try {
         -InputArtifactPath $inputArtifactPath `
         -Description $inputArtifactDescription `
         -WaitForCompletion `
+        -WaitForCompletionTimeoutInSeconds $waitForCompletionTimeoutInSeconds `
         -OutputArtifactPath $outputArtifactPath `
         -Force
     } else {
@@ -47,6 +49,7 @@ try {
         -InputArtifactPath $inputArtifactPath `
         -Description $inputArtifactDescription `
         -WaitForCompletion `
+        -WaitForCompletionTimeoutInSeconds $waitForCompletionTimeoutInSeconds `
         -OutputArtifactPath $outputArtifactPath
     }
   } else {

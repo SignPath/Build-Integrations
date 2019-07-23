@@ -68,6 +68,15 @@
                        "required":  true,
                        "groupName":  "advanced",
                        "helpMarkDown":  "The URL of your SignPath instance or the SignPath cloud instance URL."
+                   },
+                   {
+                       "name":  "waitForCompletionTimeoutInSeconds",
+                       "type":  "string",
+                       "label":  "Wait for completion (in s)",
+                       "defaultValue":  "600",
+                       "required":  true,
+                       "groupName":  "advanced",
+                       "helpMarkDown":  "The time span the task is waiting for the signing request to be completed (if it is not already completed)."
                    }
                ],
     "execution":  {
