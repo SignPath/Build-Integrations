@@ -1,4 +1,18 @@
-Param([int]$MajorVersion, [int]$MinorVersion, [int]$PatchVersion)
+Param([int]$MajorVersion = -1, [int]$MinorVersion = -1, [int]$PatchVersion = -1)
+
+. $PSScriptRoot\_version.ps1
+
+if($MajorVersion -eq -1) {
+  $MajorVersion = $_MajorVersion
+}
+if($MinorVersion -eq -1) {
+  $MinorVersion = $_MinorVersion
+}
+if($PatchVersion -eq -1) {
+  $PatchVersion = $_PatchVersion
+}
+
+Write-Host "Using version $MajorVersion.$MinorVersion.$PatchVersion"
 
 $tasks = @('signPathDownloadSignedArtifactTask', 'signPathSubmitSigningRequestTask')
 
