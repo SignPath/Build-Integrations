@@ -11,6 +11,7 @@ try {
   [string]$ciUserToken = Get-VstsInput -Name ciUserToken
   [bool]$allowOverwriting = Get-VstsInput -Name allowOverwriting -AsBool
   [string]$apiUrl = Get-VstsInput -Name apiUrl
+  [string]$waitForCompletionTimeoutInSeconds = Get-VstsInput -Name waitForCompletionTimeoutInSeconds
   
   Install-Module -Name SignPath -MinimumVersion 1.2.0 -MaximumVersion 1.2.0 -Scope CurrentUser -Force
   
@@ -21,6 +22,7 @@ try {
       -OrganizationId $organizationId `
       -SigningRequestId $signingRequestId `
       -OutputArtifactPath $outputArtifactPath `
+      -WaitForCompletionTimeoutInSeconds $waitForCompletionTimeoutInSeconds `
       -Force
   } else {
     Get-SignedArtifact `
@@ -28,7 +30,8 @@ try {
       -CIUserToken $ciUserToken `
       -OrganizationId $organizationId `
       -SigningRequestId $signingRequestId `
-      -OutputArtifactPath $outputArtifactPath
+      -OutputArtifactPath $outputArtifactPath `
+      -WaitForCompletionTimeoutInSeconds $waitForCompletionTimeoutInSeconds
   }
 } finally {
     Trace-VstsLeavingInvocation $MyInvocation
