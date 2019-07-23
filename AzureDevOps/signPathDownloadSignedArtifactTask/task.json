@@ -8,8 +8,8 @@
     "author":  "SignPath GmbH",
     "version":  {
                     "Major":  0,
-                    "Minor":  2,
-                    "Patch":  7
+                    "Minor":  3,
+                    "Patch":  0
                 },
     "instanceNameFormat":  "SignPath DownloadSignedArtifact $(signingRequestId)",
     "groups":  [
