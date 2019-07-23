@@ -12,17 +12,16 @@ steps:
 - task: PowerShell@2
   inputs:
     filePath: 'AzureDevOps/pack.ps1'
-    arguments: '-MajorVersion $(MajorVersion) -MinorVersion $(MinorVersion) -PatchVersion $(PatchVersion)'
     workingDirectory: 'AzureDevOps/'
 
 - task: SignPathSubmitSigningRequest@0
   inputs:
     waitForCompletion: 'sync'
-    inputArtifactPath: 'AzureDevOps/SignPath.signpath-tasks-$(MajorVersion).$(MinorVersion).$(PatchVersion).vsix'
+    inputArtifactPath: 'AzureDevOps/SignPath.signpath-tasks-*.vsix'
     organizationId: '$(OrganizationId)'
     projectName: 'RnD-SP: SignPath Integrations AzureDevOps'
     signingPolicyName: 'test-signing'
-    outputArtifactPath: '$(Build.ArtifactStagingDirectory)/SignPath.signpath-tasks-$(MajorVersion).$(MinorVersion).$(PatchVersion).signed.vsix'
+    outputArtifactPath: '$(Build.ArtifactStagingDirectory)/SignPath.signpath-tasks.signed.vsix'
     allowOverwriting: false
     ciUserToken: '$(CIUserToken)'
     apiUrl: 'https://app.signpath.io/api/'
@@ -30,5 +29,5 @@ steps:
 
 - task: PublishPipelineArtifact@1
   inputs:
-    targetPath: '$(Build.ArtifactStagingDirectory)/SignPath.signpath-tasks-$(MajorVersion).$(MinorVersion).$(PatchVersion).signed.vsix'
+    targetPath: '$(Build.ArtifactStagingDirectory)/SignPath.signpath-tasks.signed.vsix'
     artifact: 'SignPath.Integrations.AzureDevOps (signed vstx)'
