@@ -26,6 +26,7 @@ steps:
     allowOverwriting: false
     ciUserToken: '$(CIUserToken)'
     apiUrl: 'https://app.signpath.io/api/'
+    waitForCompletionTimeoutInSeconds: '3600'
 
 - task: PublishPipelineArtifact@1
   inputs:
