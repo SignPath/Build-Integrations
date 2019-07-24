@@ -23,7 +23,7 @@ try {
   $arguments["OutputArtifactPath"] = $outputArtifactPath
   $arguments["WaitForCompletionTimeoutInSeconds"] = $waitForCompletionTimeoutInSeconds
   if($allowOverwriting) {
-    $arguments["Force"] = ""
+    $arguments["Force"] = $True
   }
 
   Get-SignedArtifact @arguments
