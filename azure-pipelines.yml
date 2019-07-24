@@ -25,12 +25,6 @@ steps:
         Write-Host "Non-Master build - using SignPath test-signing signing policy"
         Write-Host "##vso[task.setvariable variable=SigningPolicyName]test-signing"
       }
-      
-      # Write your powershell commands here.
-      
-      Write-Host "Hello World"
-      
-      # Use the environment variables input below to pass secret variables to this script.
 
 - task: SignPathSubmitSigningRequest@1
   inputs:
