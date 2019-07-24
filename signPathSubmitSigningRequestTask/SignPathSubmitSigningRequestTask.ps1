@@ -50,9 +50,9 @@ try {
     if($outputVariableName) {
       Write-VstsSetVariable -Name $outputVariableName -Value $signingRequestId
     }
+    
+    Write-Host "Signing request ID: $signingRequestId"
   }
-  
-  Write-Host "Signing request ID: $signingRequestId"
 
 } finally {
     Trace-VstsLeavingInvocation $MyInvocation
