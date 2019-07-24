@@ -13,13 +13,26 @@ steps:
   inputs:
     filePath: 'pack.ps1'
 
-- task: SignPathSubmitSigningRequest@0
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      $branch = $env:Build_SourceBranchName
+      if($branch -eq 'master') {
+        Write-Host "Master build - using SignPath release-signing signing policy"
+        Write-Host "##vso[task.setvariable variable=SigningPolicyName]release-signing"
+      } else {
+        Write-Host "Non-Master build - using SignPath test-signing signing policy"
+        Write-Host "##vso[task.setvariable variable=SigningPolicyName]test-signing"
+      }
+
+- task: SignPathSubmitSigningRequest@1
   inputs:
     waitForCompletion: 'sync'
     inputArtifactPath: 'SignPath.signpath-tasks-*.vsix'
     organizationId: '$(OrganizationId)'
     projectName: 'RnD-SP: SignPath Integrations AzureDevOps'
-    signingPolicyName: 'test-signing'
+    signingPolicyName: $(SigningPolicyName)
     outputArtifactPath: '$(Build.ArtifactStagingDirectory)/SignPath.signpath-tasks.signed.vsix'
     allowOverwriting: false
     ciUserToken: '$(CIUserToken)'
@@ -29,4 +42,4 @@ steps:
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: '$(Build.ArtifactStagingDirectory)/SignPath.signpath-tasks.signed.vsix'
-    artifact: 'SignPath.Integrations.AzureDevOps (signed vstx)'
+    artifact: 'SignPath.Integrations.AzureDevOps (signed vsix)'
