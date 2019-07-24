@@ -32,7 +32,7 @@ steps:
       
       # Use the environment variables input below to pass secret variables to this script.
 
-- task: SignPathSubmitSigningRequest@0
+- task: SignPathSubmitSigningRequest@1
   inputs:
     waitForCompletion: 'sync'
     inputArtifactPath: 'SignPath.signpath-tasks-*.vsix'
