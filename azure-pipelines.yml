@@ -11,13 +11,13 @@ steps:
 
 - task: PowerShell@2
   inputs:
-    filePath: 'AzureDevOps/pack.ps1'
+    filePath: 'pack.ps1'
     workingDirectory: 'AzureDevOps/'
 
 - task: SignPathSubmitSigningRequest@0
   inputs:
     waitForCompletion: 'sync'
-    inputArtifactPath: 'AzureDevOps/SignPath.signpath-tasks-*.vsix'
+    inputArtifactPath: 'SignPath.signpath-tasks-*.vsix'
     organizationId: '$(OrganizationId)'
     projectName: 'RnD-SP: SignPath Integrations AzureDevOps'
     signingPolicyName: 'test-signing'
