@@ -20,57 +20,40 @@ try {
   
   $inputArtifactPath = Find-VstsMatch -Pattern $inputArtifactPath
   
+  $arguments = @{}
+  $arguments["ApiUrl"] = $apiUrl
+  $arguments["CIUserToken"] = $ciUserToken
+  $arguments["OrganizationId"] = $organizationId
+  $arguments["ProjectName"] = $projectName
+  $arguments["ArtifactConfigurationName"] = $artifactConfigurationName
+  $arguments["SigningPolicyName"] = $signingPolicyName
+  $arguments["InputArtifactPath"] = $inputArtifactPath
+  $arguments["Description"] = $inputArtifactDescription
+  
   if($waitForCompletion -eq 'sync') {
     [string]$outputArtifactPath = Get-VstsInput -Name outputArtifactPath
     [bool]$allowOverwriting = Get-VstsInput -Name allowOverwriting -AsBool
     
+    $arguments["WaitForCompletion"] = ""
+    $arguments["WaitForCompletionTimeoutInSeconds"] = $waitForCompletionTimeoutInSeconds
+    $arguments["OutputArtifactPath"] = $outputArtifactPath
     if($allowOverwriting) {
-      Submit-SigningRequest `
-        -ApiUrl $apiUrl `
-        -CIUserToken $ciUserToken `
-        -OrganizationId $organizationId `
-        -ProjectName $projectName `
-        -ArtifactConfigurationName $artifactConfigurationName `
-        -SigningPolicyName $signingPolicyName `
-        -InputArtifactPath $inputArtifactPath `
-        -Description $inputArtifactDescription `
-        -WaitForCompletion `
-        -WaitForCompletionTimeoutInSeconds $waitForCompletionTimeoutInSeconds `
-        -OutputArtifactPath $outputArtifactPath `
-        -Force
-    } else {
-      Submit-SigningRequest `
-        -ApiUrl $apiUrl `
-        -CIUserToken $ciUserToken `
-        -OrganizationId $organizationId `
-        -ProjectName $projectName `
-        -ArtifactConfigurationName $artifactConfigurationName `
-        -SigningPolicyName $signingPolicyName `
-        -InputArtifactPath $inputArtifactPath `
-        -Description $inputArtifactDescription `
-        -WaitForCompletion `
-        -WaitForCompletionTimeoutInSeconds $waitForCompletionTimeoutInSeconds `
-        -OutputArtifactPath $outputArtifactPath
+      $arguments["Force"] = ""
     }
-  } else {
-    [string]$outputVariableName = Get-VstsInput -Name outputVariableName
+  }
   
-    $signingRequestId = Submit-SigningRequest `
-      -ApiUrl $apiUrl `
-      -CIUserToken $ciUserToken `
-      -OrganizationId $organizationId `
-      -ProjectName $projectName `
-      -ArtifactConfigurationName $artifactConfigurationName `
-      -SigningPolicyName $signingPolicyName `
-      -InputArtifactPath $inputArtifactPath `
-      -Description $inputArtifactDescription
-
+  $signingRequestId = Submit-SigningRequest @arguments
+  
+  if($waitForCompletion -eq 'async') {
+    [string]$outputVariableName = Get-VstsInput -Name outputVariableName
+    
     if($outputVariableName) {
       Write-VstsSetVariable -Name $outputVariableName -Value $signingRequestId
     }
-    
-    Write-Host "Signing request ID: $signingRequestId"
   }
+  
+  Write-Host "Signing request ID: $signingRequestId"
+
 } finally {
     Trace-VstsLeavingInvocation $MyInvocation
 }

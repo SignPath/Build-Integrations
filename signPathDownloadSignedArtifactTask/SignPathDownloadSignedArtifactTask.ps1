@@ -15,24 +15,19 @@ try {
   
   Install-Module -Name SignPath -MinimumVersion 1.2.0 -MaximumVersion 1.2.0 -Scope CurrentUser -Force
   
+  $arguments = @{}
+  $arguments["ApiUrl"] = $apiUrl
+  $arguments["CIUserToken"] = $ciUserToken
+  $arguments["OrganizationId"] = $organizationId
+  $arguments["SigningRequestId"] = $signingRequestId
+  $arguments["OutputArtifactPath"] = $outputArtifactPath
+  $arguments["WaitForCompletionTimeoutInSeconds"] = $waitForCompletionTimeoutInSeconds
   if($allowOverwriting) {
-    Get-SignedArtifact `
-      -ApiUrl $apiUrl `
-      -CIUserToken $ciUserToken `
-      -OrganizationId $organizationId `
-      -SigningRequestId $signingRequestId `
-      -OutputArtifactPath $outputArtifactPath `
-      -WaitForCompletionTimeoutInSeconds $waitForCompletionTimeoutInSeconds `
-      -Force
-  } else {
-    Get-SignedArtifact `
-      -ApiUrl $apiUrl `
-      -CIUserToken $ciUserToken `
-      -OrganizationId $organizationId `
-      -SigningRequestId $signingRequestId `
-      -OutputArtifactPath $outputArtifactPath `
-      -WaitForCompletionTimeoutInSeconds $waitForCompletionTimeoutInSeconds
+    $arguments["Force"] = ""
   }
+
+  Get-SignedArtifact @arguments
+
 } finally {
     Trace-VstsLeavingInvocation $MyInvocation
 }
