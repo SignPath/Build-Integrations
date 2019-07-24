@@ -19,7 +19,7 @@ steps:
     inputArtifactPath: 'SignPath.signpath-tasks-*.vsix'
     organizationId: '$(OrganizationId)'
     projectName: 'RnD-SP: SignPath Integrations AzureDevOps'
-    signingPolicyName: 'test-signing'
+    signingPolicyName: 'release-signing'
     outputArtifactPath: '$(Build.ArtifactStagingDirectory)/SignPath.signpath-tasks.signed.vsix'
     allowOverwriting: false
     ciUserToken: '$(CIUserToken)'
