@@ -42,4 +42,4 @@ steps:
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: '$(Build.ArtifactStagingDirectory)/SignPath.signpath-tasks.signed.vsix'
-    artifact: 'SignPath.Integrations.AzureDevOps (signed vstx)'
+    artifact: 'SignPath.Integrations.AzureDevOps (signed vsix)'
