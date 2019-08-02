@@ -20,8 +20,8 @@ After installing the extension, you can add one (or more) of the tasks to a new 
 
 ## Get the source
 
-The [source](https://github.com/SignPath/Build-Integrations-AzureDevOps) for this extension is on Github. Take, fork, and extend.
+The [source](https://github.com/SignPath/Build-Integrations-AzureDevOps) for this extension is on GitHub. Take, fork, and extend.
 
 ## Feedback and issues
 
-If you have feedback or issues, please [send an email](mailto:support@signpath.io) or file an issue on [Github](https://github.com/SignPath/Build-Integrations-AzureDevOps/issues)
+If you have feedback or issues, please [send an email](mailto:support@signpath.io) or file an issue on [GitHub](https://github.com/SignPath/Build-Integrations-AzureDevOps/issues)
