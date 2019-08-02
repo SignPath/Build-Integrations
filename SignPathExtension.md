@@ -9,7 +9,7 @@ Supported file formats: EXE, DLL, PowerShell, MSI, CAB, AppX, nupkg, Office add-
 
 After installing the extension, you can add one (or more) of the tasks to a new or existing build definition.
 
-![Screenshot](./images/screenshot-extension.png)
+![Screenshot](images/screenshot-extension.png)
 
 ## Available tasks
 
