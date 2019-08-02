@@ -1,17 +1,17 @@
+[![SignPath logo](./images/logo_signpath_500.png)](https://about.signpath.io)
+
 # SignPath Azure DevOps Build Pipeline Tasks
 
-Build tasks to integrate SignPath code signing into your build pipeline.
-
-## Installation
-
-Go to the [Azure DevOps marketplace](https://marketplace.visualstudio.com/items?itemName=SignPath.signpath-tasks) to install the SignPath extension into your Azure DevOps organization. Afterwards you can find the SignPath tasks in your task list when creating or updating a build pipeline.
+This repository contains the Azure DevOps Build Pipeline tasks for [SignPath.io](https://about.signpath.io) that can be used to integrate code signing into your build pipeline. You can find the tasks on the [Azure DevOps marketplace](https://marketplace.visualstudio.com/items?itemName=SignPath.signpath-tasks). 
 
 ## Available tasks
 
-### SignPathSubmitSigningRequestTask
+* **SignPathSubmitSigningRequestTask**  
+ Submit an artifact to SignPath. Either wait for the artifact to be signed synchronously and immediately download the resulting artifact, or, choose to write the signing request ID into an output variable and download the signed artifact later on using the SignPathDownloadSignedArtifact task.
+* **SignPathDownloadSignedArtifactTask**  
+ Download a signed artifact from SignPath. This task waits if the signing request has not yet been completed.
 
-Submit an artifact to SignPath. Either wait for the artifact to be signed synchronously and immediately download the resulting artifact, or, choose to write the signing request ID into an output variable and download the signed artifact later on using the SignPathDownloadSignedArtifact task.
+## Status
+[![Build Status](https://dev.azure.com/signpath/SignPath.Integrations.AzureDevOps/_apis/build/status/SignPath.Integrations.AzureDevOps?branchName=master)](https://dev.azure.com/signpath/SignPath.Integrations.AzureDevOps/_build/latest?definitionId=1&branchName=master)
 
-### SignPathDownloadSignedArtifactTask
-
-Download a signed artifact from SignPath. This task waits if the signing request has not yet been completed.
+The project is built using [Azure DevOps pipelines](https://dev.azure.com/signpath/SignPath.Integrations.AzureDevOps) and the very same tasks provided in this repository for code signing. You can view the [azure-pipelines.yml](./azure-pipelines.yml) for reference.
