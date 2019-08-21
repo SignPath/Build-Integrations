@@ -8,15 +8,16 @@ try {
   [string]$waitForCompletion = Get-VstsInput -Name waitForCompletion
   [string]$inputArtifactPath = Get-VstsInput -Name inputArtifactPath
   [string]$organizationId = Get-VstsInput -Name organizationId
-  [string]$projectName = Get-VstsInput -Name projectName
-  [string]$signingPolicyName = Get-VstsInput -Name signingPolicyName
-  [string]$artifactConfigurationName = Get-VstsInput -Name artifactConfigurationName
+  [string]$projectKey = Get-VstsInput -Name projectKey
+  [string]$signingPolicyKey = Get-VstsInput -Name signingPolicyKey
+  [string]$artifactConfigurationKey = Get-VstsInput -Name artifactConfigurationKey
   [string]$ciUserToken = Get-VstsInput -Name ciUserToken
   [string]$inputArtifactDescription = Get-VstsInput -Name inputArtifactDescription
   [string]$apiUrl = Get-VstsInput -Name apiUrl
   [string]$waitForCompletionTimeoutInSeconds = Get-VstsInput -Name waitForCompletionTimeoutInSeconds
 
-  Install-Module -Name SignPath -MinimumVersion 1.2.0 -MaximumVersion 1.2.0 -Scope CurrentUser -Force
+  # Install the highest minor/patch version of the module
+  Install-Module -Name SignPath -MinimumVersion 2.0.0 -MaximumVersion 2.999.999 -Scope CurrentUser -Force
   
   $inputArtifactPath = Find-VstsMatch -Pattern $inputArtifactPath
   
@@ -24,9 +25,9 @@ try {
   $arguments["ApiUrl"] = $apiUrl
   $arguments["CIUserToken"] = $ciUserToken
   $arguments["OrganizationId"] = $organizationId
-  $arguments["ProjectName"] = $projectName
-  $arguments["ArtifactConfigurationName"] = $artifactConfigurationName
-  $arguments["SigningPolicyName"] = $signingPolicyName
+  $arguments["ProjectKey"] = $projectKey
+  $arguments["ArtifactConfigurationKey"] = $artifactConfigurationKey
+  $arguments["SigningPolicyKey"] = $signingPolicyKey
   $arguments["InputArtifactPath"] = $inputArtifactPath
   $arguments["Description"] = $inputArtifactDescription
   

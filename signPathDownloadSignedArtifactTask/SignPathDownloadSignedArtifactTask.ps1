@@ -13,7 +13,8 @@ try {
   [string]$apiUrl = Get-VstsInput -Name apiUrl
   [string]$waitForCompletionTimeoutInSeconds = Get-VstsInput -Name waitForCompletionTimeoutInSeconds
   
-  Install-Module -Name SignPath -MinimumVersion 1.2.0 -MaximumVersion 1.2.0 -Scope CurrentUser -Force
+  # Install the highest minor/patch version of the module
+  Install-Module -Name SignPath -MinimumVersion 2.0.0 -MaximumVersion 2.999.999 -Scope CurrentUser -Force
   
   $arguments = @{}
   $arguments["ApiUrl"] = $apiUrl
