@@ -11,7 +11,7 @@
                     "Minor":  0,
                     "Patch":  0
                 },
-    "instanceNameFormat":  "SignPath SubmitSigningRequest $(projectKey) / $(signingPolicyKey)",
+    "instanceNameFormat":  "SignPath SubmitSigningRequest $(projectSlug) / $(signingPolicySlug)",
     "groups":  [
                    {
                        "name":  "advanced",
@@ -57,28 +57,28 @@
                        "helpMarkDown":  "Your SignPath organization ID. If you don\u0027t know it, log into SignPath and go to the organization details page."
                    },
                    {
-                       "name":  "projectKey",
+                       "name":  "projectSlug",
                        "type":  "string",
-                       "label":  "Project key",
+                       "label":  "Project slug",
                        "defaultValue":  "",
                        "required":  true,
-                       "helpMarkDown":  "The project key. If you don\u0027t know it, log into SignPath, go to the projects list page and select one of the projects."
+                       "helpMarkDown":  "The project slug. If you don\u0027t know it, log into SignPath, go to the projects list page and select one of the projects."
                    },
                    {
-                       "name":  "signingPolicyKey",
+                       "name":  "signingPolicySlug",
                        "type":  "string",
-                       "label":  "Signing policy key",
+                       "label":  "Signing policy slug",
                        "defaultValue":  "",
                        "required":  true,
-                       "helpMarkDown":  "The signing policy key. If you don\u0027t know it, log into SignPath, go to the project\u0027s details page and select one of the signing policies."
+                       "helpMarkDown":  "The signing policy slug. If you don\u0027t know it, log into SignPath, go to the project\u0027s details page and select one of the signing policies."
                    },
                    {
-                       "name":  "artifactConfigurationKey",
+                       "name":  "artifactConfigurationSlug",
                        "type":  "string",
-                       "label":  "Artifact configuration key (optional)",
+                       "label":  "Artifact configuration slug (optional)",
                        "defaultValue":  "",
                        "required":  false,
-                       "helpMarkDown":  "The artifact configuration key. If left empty, the default artifact configuration is selected. If you don\u0027t know it, log into SignPath, go to the project\u0027s details page and select one of the artifact configurations."
+                       "helpMarkDown":  "The artifact configuration slug. If left empty, the default artifact configuration is selected. If you don\u0027t know it, log into SignPath, go to the project\u0027s details page and select one of the artifact configurations."
                    },
                    {
                        "name":  "outputArtifactPath",

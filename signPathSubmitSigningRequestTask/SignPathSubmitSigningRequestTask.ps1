@@ -8,9 +8,9 @@ try {
   [string]$waitForCompletion = Get-VstsInput -Name waitForCompletion
   [string]$inputArtifactPath = Get-VstsInput -Name inputArtifactPath
   [string]$organizationId = Get-VstsInput -Name organizationId
-  [string]$projectKey = Get-VstsInput -Name projectKey
-  [string]$signingPolicyKey = Get-VstsInput -Name signingPolicyKey
-  [string]$artifactConfigurationKey = Get-VstsInput -Name artifactConfigurationKey
+  [string]$projectSlug = Get-VstsInput -Name projectSlug
+  [string]$signingPolicyKey = Get-VstsInput -Name signingPolicySlug
+  [string]$artifactConfigurationSlug = Get-VstsInput -Name artifactConfigurationSlug
   [string]$ciUserToken = Get-VstsInput -Name ciUserToken
   [string]$inputArtifactDescription = Get-VstsInput -Name inputArtifactDescription
   [string]$apiUrl = Get-VstsInput -Name apiUrl
@@ -25,9 +25,9 @@ try {
   $arguments["ApiUrl"] = $apiUrl
   $arguments["CIUserToken"] = $ciUserToken
   $arguments["OrganizationId"] = $organizationId
-  $arguments["ProjectKey"] = $projectKey
-  $arguments["ArtifactConfigurationKey"] = $artifactConfigurationKey
-  $arguments["SigningPolicyKey"] = $signingPolicyKey
+  $arguments["ProjectSlug"] = $projectSlug
+  $arguments["ArtifactConfigurationSlug"] = $artifactConfigurationSlug
+  $arguments["SigningPolicySlug"] = $signingPolicySlug
   $arguments["InputArtifactPath"] = $inputArtifactPath
   $arguments["Description"] = $inputArtifactDescription
   
