@@ -9,7 +9,7 @@ try {
   [string]$inputArtifactPath = Get-VstsInput -Name inputArtifactPath
   [string]$organizationId = Get-VstsInput -Name organizationId
   [string]$projectSlug = Get-VstsInput -Name projectSlug
-  [string]$signingPolicyKey = Get-VstsInput -Name signingPolicySlug
+  [string]$signingPolicySlug = Get-VstsInput -Name signingPolicySlug
   [string]$artifactConfigurationSlug = Get-VstsInput -Name artifactConfigurationSlug
   [string]$ciUserToken = Get-VstsInput -Name ciUserToken
   [string]$inputArtifactDescription = Get-VstsInput -Name inputArtifactDescription
