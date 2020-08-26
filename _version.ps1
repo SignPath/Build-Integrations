@@ -1,3 +1,3 @@
-$_MajorVersion = 2
+$_MajorVersion = 3
 $_MinorVersion = 0
-$_PatchVersion = 1
+$_PatchVersion = 0
