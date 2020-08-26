@@ -20,19 +20,19 @@ steps:
       $branch = $env:Build_SourceBranchName
       if($branch -eq 'master') {
         Write-Host "Master build - using SignPath release-signing signing policy"
-        Write-Host "##vso[task.setvariable variable=SigningPolicyKey]release-signing"
+        Write-Host "##vso[task.setvariable variable=SigningPolicySlug]release-signing"
       } else {
         Write-Host "Non-Master build - using SignPath test-signing signing policy"
-        Write-Host "##vso[task.setvariable variable=SigningPolicyKey]test-signing"
+        Write-Host "##vso[task.setvariable variable=SigningPolicySlug]test-signing"
       }
 
-- task: SignPathSubmitSigningRequest@2
+- task: SignPathSubmitSigningRequest@3
   inputs:
     waitForCompletion: 'sync'
     inputArtifactPath: 'SignPath.signpath-tasks-*.vsix'
     organizationId: '$(OrganizationId)'
-    projectKey: 'RnD-SP.SignPath-Integrations.AzureDevOps'
-    signingPolicyKey: $(SigningPolicyKey)
+    projectSlug: 'RnD-SP.SignPath-Integrations.AzureDevOps'
+    signingPolicySlug: $(SigningPolicySlug)
     outputArtifactPath: '$(Build.ArtifactStagingDirectory)/SignPath.signpath-tasks.signed.vsix'
     allowOverwriting: false
     ciUserToken: '$(CIUserToken)'
