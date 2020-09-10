@@ -18,6 +18,12 @@ After installing the extension, you can add one (or more) of the tasks to a new 
 * **SignPathDownloadSignedArtifactTask**  
  Download a signed artifact from SignPath. This task waits if the signing request has not yet been completed.
 
+## Running on self-hosted agents
+
+On self-hosted agents, the NuGetProvider needs to be available. You can install it by calling the following command on a PowerShell console with elevated permissions:
+
+     Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201
+
 ## Get the source
 
 The [source](https://github.com/SignPath/Build-Integrations-AzureDevOps) for this extension is on GitHub. Take, fork, and extend.
